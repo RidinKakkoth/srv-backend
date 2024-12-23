@@ -26,12 +26,7 @@ export const addProduct = async (req, res) => {
 
     await newProduct.save();
 
-    // // Send notification to all users subscribed to new product updates
-    // const users = await User.find({ 'subscribedTo.notificationType': 'new' });
-
-    // users.forEach(user => {
-    //   sendNotification(user._id, `New '${name}' product added`);
-    // });
+    
 
     res.status(201).json({ success: true, message: 'Product added successfully' });
   } catch (error) {
@@ -64,14 +59,7 @@ export const updateProduct = async (req, res) => {
       product.updatedAt = Date.now();
       await product.save();
   
-    //   // Send notification to users subscribed to updates for this product
-    //   const users = await User.find({ 'subscribedTo.productId': productId, 'subscribedTo.notificationType': 'update' });
-  
-    //   users.forEach(user => {
-    //     updatedFields.forEach(field => {
-    //       sendNotification(user._id, `'${product.name}' product updated. ${field.field} changed to '${field.newValue}'`);
-    //     });
-    //   });
+    
   
       res.status(200).json({ success: true, message: 'Product updated successfully' });
     } catch (error) {
@@ -92,12 +80,7 @@ export const updateProduct = async (req, res) => {
   
        await Product.findByIdAndDelete(id);
   
-    //   // Send notification to users subscribed to updates for this product
-    //   const users = await User.find({ 'subscribedTo.productId': productId, 'subscribedTo.notificationType': 'delete' });
-  
-    //   users.forEach(user => {
-    //     sendNotification(user._id, `'${product.name}' product has been removed from our catalog`);
-    //   });
+    
   
       res.status(200).json({ success: true, message: 'Product deleted successfully' });
     } catch (error) {
